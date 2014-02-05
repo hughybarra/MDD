@@ -1,4 +1,4 @@
-MDD
-===
+Hugh Ybarra MDD 
+==============
 
-MDD repo 
+This will be the primary repo for all MDD related materials. 
