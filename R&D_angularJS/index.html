@@ -1,0 +1,24 @@
+
+<!doctype html>
+<html ng-app='hugoApp'>
+  <head>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+
+    <!-- angular script -->
+    <script src="js/todo.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div ng-controller="HugoCtrl">
+          <p>{{phone.number}}</p>
+          <p>{{phone.value}}</p>
+        </div>
+      </div><!-- end row -->
+    </div><!-- end container -->
+  </body>
+</html>
