@@ -1,0 +1,23 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li><a ng-href="#">Home</a></li>
+    <li class="active"><a ng-href="#">Projects</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">assignment1</h3>
+</div>
+
+<div class="container">
+  <div ng-repeat="data in projects">
+    <h3>{{data.projectName}}</h3>
+    <p>{{data.projectAbout}}</p>
+    <a ng-href="#/projectDetail/{{data.id}}">Show More</a>
+  </div><!-- end div cell -->
+</div><!-- End container class -->
+
+
+</ul>
+
+<div class="footer">
+  <p>Hugo's Workshop</p>
+</div>

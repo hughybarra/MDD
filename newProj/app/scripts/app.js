@@ -9,7 +9,15 @@ angular.module('newProjApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/landing/landing.html'
+        controller: 'MainCtrl'
+      })
+      .when('/projects', {
+        templateUrl: 'views/projects/projects.html',
+        controller: 'projectsController'
+      })
+      .when('/contact', {
+        templateUrl:'',
         controller: 'MainCtrl'
       })
       .otherwise({
