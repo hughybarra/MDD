@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('assignment1App')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl',[ '$scope', "$firebaseSimpleLogin", function ($scope) {
 
-
-  });
+  }]);

@@ -1,27 +1,39 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">Projects</a></li>
-    <li><a ng-href="#">Contact</a></li>
+    <li><a ng-href="#/projects">Projects</a></li>
+    <li><a ng-href="#/contact">Contact</a></li>
+    <li><a ng-href="#/admin">Admin</a></li>
+    <li><a ng-show="loginObj.user" href="#" ng-click="loginObj.$logout()">Logout</a></li>
   </ul>
-  <h3 class="text-muted">assignment1</h3>
+  <h3 class="text-muted">Workshop</h3>
+
 </div>
 
-<div class="jumbotron">
+<!-- <div class="jumbotron">
   <h1>Hugo's Workshop</h1>
   <p class="lead">
-    <img src="images/klaus.png" alt="King Klaus"><br>
+
+    <img src="images/klaus.png" class="img-responsive"  alt="Responsive King Klaus"><br>
     Welcome To Hugos Workshop
   </p>
   <p><a class="btn btn-lg btn-success" ng-href="#/projects">Avanti!</a></p>
-</div>
+</div> -->
 
 <div class="row marketing">
-  <h4>Personal Projects Site</h4>
-  <p>
-      This is a site meant to spotlight some of the cool stuff we have been working on here at Full Sail university
-  </p>
 
+  <div ng-show="loginObj.user">
+    <h4>Personal Projects Site</h4>
+    <p> This is a site meant to spotlight some of the cool stuff we have been working on here at Full Sail university</p>
+    <a class="btn btn-lg btn-success" ng-href="#/projects">Avanti!</a>
+  </div>
+
+
+  <!-- login form -->
+  <div class="row" ng-hide="loginObj.user">
+      <h3>Github Login</h3>
+      <a href="#" ng-hide="loginObj.user" ng-click="loginObj.$login('github')">Login</a>
+  </div>
 
 </div>
 

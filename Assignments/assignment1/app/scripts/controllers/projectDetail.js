@@ -1,13 +1,11 @@
 'use strict';
 
 angular.module('assignment1App')
-  .controller('ProjectdetailCtrl', function ($scope, $routeParams) {
-  	$scope.pName = 'Project Detail Ctrl';
-  	$scope.params = $routeParams;
-  	$scope.test = 'test title';
-  	$scope.newTest = 'new test';
+  .controller('ProjectdetailCtrl',['$scope', '$firebase','$routeParams', function ($scope, $firebase, $routeParams) {
+  	 // get project data from fire base using Angular fire
 
-  	$scope.newData = [
-  	{'obj': 'test'}
-  	];
-  });
+  	 // set the url
+  	var URL = 'https://personalproj.firebaseio.com/myprojects/'+ $routeParams.id;
+  	// fetch and set scope items
+  	$scope.items = $firebase(new Firebase(URL));
+  }]);
