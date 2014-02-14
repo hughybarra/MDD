@@ -1,0 +1,15 @@
+<p class="lead text-center">Pick your subject below and find out how others learned to solve their problems</p>
+
+<hr>
+
+<!-- Loop over all of the subject -->
+
+<div class="list-group">
+
+	<li ng-repeat="sub in subjects" class="list-group-item">
+		<!-- change the default height on these plox -->
+		<p><span class="text-center">{{sub.subjectName}}</span><span class="pull-right"> {{sub.contributers}}</span> </p>
+	</li>
+	<!-- List - group - item - success is not working for some reason -->
+	<li class="list-group-item list-group-item-success text-center" ng-click="addSubject()"><span class="glyphicon glyphicon-plus"></span></li>
+</div>
