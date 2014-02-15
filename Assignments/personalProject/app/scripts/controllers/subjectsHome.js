@@ -33,6 +33,10 @@ angular.module('personalProjectApp')
 			1. loop through subjects
 			2. Assign directives to subjects
 		*/
+
+		// setting scope new sub to show original list and hide form
+		$scope.newSub = false;
+
 		$scope.subjects = [
 		{subjectName: "Python", contributers: 5},
 		{subjectName: "Cold Fusion", contributers: 3},
@@ -48,6 +52,19 @@ angular.module('personalProjectApp')
 		// Add subject
 		$scope.addSubject = function(){
 			console.log("clicked");
-
+			$scope.newSub = true;
+		};
+		// back button
+		$scope.backLink = function(){
+			console.log('back');
+			$scope.newSub = false;
+		};
+		// Submit new subject
+		$scope.submitNewSubject = function(){
+			console.log('subject clicked');
+		};
+		// subject click function
+		$scope.subjectClicked = function(){
+			console.log('subject clicked');
 		};
   });

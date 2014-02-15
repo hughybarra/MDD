@@ -28,7 +28,7 @@ App.directive('mynav',function(){
     restrict: 'E',
     // templateUrl: 'views/nav/nav.html'
     // Fix the margin on this junk. The optionsbox on the right needs fixing
-    template: '<nav class="navbar navbar-inverse" role="navigation" ><p class="navbar-text lead">Welcome to Hugo\'s Workshop</p> <span class="navbar-text pull-right glyphicon glyphicon-th-list"></span</nav>'
+    template: '<nav class="navbar navbar-inverse col-xs-12" role="navigation" ><p class="navbar-text lead">Welcome to Hugo\'s Workshop</p> <span class="navbar-text pull-right glyphicon glyphicon-th-list"></span</nav>'
   };
 });
 
