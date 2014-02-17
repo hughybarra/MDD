@@ -27,6 +27,7 @@
     <!-- Add your site or application content here -->
     <!-- page nav heading -->
     <mynav></mynav>
+
     <div class="container-fluid" ng-view="">
     </div>
 
@@ -56,6 +57,10 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/angularfire.js"></script>
+    <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -65,6 +70,9 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/subjectsHome.js"></script>
         <script src="scripts/controllers/addSubject.js"></script>
+        <script src="scripts/controllers/userSubjects.js"></script>
+        <script src="scripts/controllers/subjectDetail.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
         <!-- endbuild -->
 </body>
 </html>

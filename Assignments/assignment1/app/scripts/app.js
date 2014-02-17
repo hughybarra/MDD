@@ -33,5 +33,7 @@ App.run([ "$firebaseSimpleLogin", "$rootScope", function($firebaseSimpleLogin, $
     // connect to the server
     var dataRef = new Firebase("https://personalproj.firebaseio.com/");
     // init fire base simple login
+    console.log('VARIABLE GETTING SET HERE');
     $rootScope.loginObj = $firebaseSimpleLogin(dataRef);
+
   }]);

@@ -5,9 +5,9 @@
 	<p class="lead text-center">Pick your subject below and find out how others learned to solve their problems</p>
 	<hr>
 
-	<li ng-repeat="sub in subjects" class="list-group-item">
+	<li ng-repeat="($id, item) in items" class="list-group-item">
 		<!-- change the default height on these plox -->
-		<p ng-click="subjectClicked()"><span class="text-center">{{sub.subjectName}}</span><span class="pull-right"> {{sub.contributers}}</span> </p>
+		<p ng-click="subjectClicked()"><span class="text-center">{{item.subjectName}}</span><span class="pull-right"> 1</span></p>
 	</li>
 	<!-- List - group - item - success is not working for some reason -->
 	<li class="list-group-item text-center" ng-click="addSubject()"><span class="glyphicon glyphicon-plus"></span></li>
@@ -22,10 +22,13 @@
 		<hr>
 
 		<div class="form-group">
+
 			<label for="subName">Subject Name</label>
-			<input type="text" ng-model="subject.newSubject" id="subName" class="form-control">
+			<input type="text" ng-model="mainSubjects.subjectName" id="subName" class="form-control">
+
 		</div>
 		<button type="submit" ng-click="backLink()" class="btn btn-default pull-left"><span class="glyphicon glyphicon-chevron-left"></span>Back</button>
 		<button type="submit" ng-click="submitNewSubject()" class="btn btn-default pull-right">Add Project</button>
 	</form>
+
 </div>

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('personalProjectApp')
-	.controller('SubjectsHomeCtrl', function ($scope) {
+	.controller('SubjectsHomeCtrl', ['$scope', '$location', '$rootScope', '$firebase', function ($scope, $location, $rootScope, $firebase) {
 		/*
 			Subject Home Controller
+
 
 			Dependency
 			Firebse, scope
@@ -15,10 +16,14 @@ angular.module('personalProjectApp')
 
 			init tasks
 			1. connect to fire base
-			2. grab all subject vars
-			3. assign subject vars to scope
-			4. get a count of all content within subjects
-			5. assign counter to scope
+			2. set the url
+			3. fetch and set scope items
+
+
+			4. assign subject vars to scope
+			5. get a count of all content within subjects
+			6. assign counter to scope
+			7. rerout if not logged in
 
 			add a subject
 			1. on click pop up a form with a single text input for subject name
@@ -37,20 +42,26 @@ angular.module('personalProjectApp')
 		// setting scope new sub to show original list and hide form
 		$scope.newSub = false;
 
-		$scope.subjects = [
-		{subjectName: "Python", contributers: 5},
-		{subjectName: "Cold Fusion", contributers: 3},
-		{subjectName: "PHP", contributers: 7 },
-		{subjectName: "Javascript", contributers: 3},
-		{subjectName: "AngularJS", contributers: 5},
-		{subjectName: "Jquery", contributers: 8 },
-		{subjectName: "Jquery UI", contributers: 9},
-		{subjectName: "Actionscript", contributers: 10 },
-		{subjectName: "NodeJS", contributers: 20},
-		];
+		var URL = 'https://mddproj.firebaseio.com/subjectsHome';
+
+		$scope.items = $firebase( new Firebase(URL));
+		//WTF IS REMOTE ITEMS?
+		$scope.items.$bind($scope, 'remoteItems');
+
+
+
+/*
+ ██████╗██╗     ██╗ ██████╗██╗  ██╗███████╗
+██╔════╝██║     ██║██╔════╝██║ ██╔╝██╔════╝
+██║     ██║     ██║██║     █████╔╝ ███████╗
+██║     ██║     ██║██║     ██╔═██╗ ╚════██║
+╚██████╗███████╗██║╚██████╗██║  ██╗███████║
+ ╚═════╝╚══════╝╚═╝ ╚═════╝╚═╝  ╚═╝╚══════
+*/
 
 		// Add subject
 		$scope.addSubject = function(){
+			// This button swaps the subjects and form hidden states
 			console.log("clicked");
 			$scope.newSub = true;
 		};
@@ -62,9 +73,35 @@ angular.module('personalProjectApp')
 		// Submit new subject
 		$scope.submitNewSubject = function(){
 			console.log('subject clicked');
+
+			/*
+			connect to firebase using angular fire
+			1. declare firebase project url
+			2. set scope var to new fire base object
+			3. form validation
+			4. add child to firebase
+			5. reset the form
+			*/
+
+
+			var url = 'https://mddproj.firebaseio.com/subjectsHome';
+
+			$scope.subjectsHome = $firebase(new Firebase(url));
+
+			$scope.subjectsHome.$add($scope.mainSubjects);
+
+			$scope.subjectsHome = null;
+			// swap back to view mode
+			$scope.newSub = false;
 		};
+
 		// subject click function
 		$scope.subjectClicked = function(){
 			console.log('subject clicked');
+			console.log(this.$id);
+			console.log($location);
+
+			var view = "/subjects/"+this.$id
+			$location.path(view);
 		};
-  });
+  }]);
