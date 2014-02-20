@@ -7,7 +7,7 @@
 
 	<li ng-repeat="($id, item) in items" class="list-group-item">
 		<!-- change the default height on these plox -->
-		<p ng-click="subjectClicked()"><span class="text-center">{{item.subjectName}}</span><span class="pull-right"> 1</span></p>
+		<p ng-click="subjectClicked()" class="text-center">{{item.subjectName}}</p>
 	</li>
 	<!-- List - group - item - success is not working for some reason -->
 	<li class="list-group-item text-center" ng-click="addSubject()"><span class="glyphicon glyphicon-plus"></span></li>

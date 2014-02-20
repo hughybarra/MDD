@@ -26,9 +26,12 @@
 
     <!-- Add your site or application content here -->
     <!-- page nav heading -->
-    <mynav></mynav>
+    <!-- <mynav></mynav> -->
+    <the-nav-bar></the-nav-bar>
+    <options-bar></options-bar>
 
-    <div class="container-fluid" ng-view="">
+
+    <div ng-class="container-fluid" ng-view="">
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -73,6 +76,8 @@
         <script src="scripts/controllers/userSubjects.js"></script>
         <script src="scripts/controllers/subjectDetail.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/directives/navDir.js"></script>
+        <script src="scripts/directives/optionsBar.js"></script>
         <!-- endbuild -->
 </body>
 </html>

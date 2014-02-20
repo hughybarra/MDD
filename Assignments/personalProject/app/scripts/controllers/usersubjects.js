@@ -38,22 +38,22 @@ angular.module('personalProjectApp')
 
 
 
-  	// $scope.subjects = [
-  	// {title: "Python Basics ",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 20,
-  	// downVotes: 1},
+  	$scope.subjects = [
+  	{title: "Python Basics ",
+  	author: "Hugo Ybarra",
+  	upVotes: 20,
+  	downVotes: 1},
 
-  	// {title: "Intro To pythong ",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 3,
-  	// downVotes: 5},
+  	{title: "Intro To pythong ",
+  	author: "Hugo Ybarra",
+  	upVotes: 3,
+  	downVotes: 5},
 
-  	// {title: "simple game",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 200,
-  	// downVotes: 3},
-  	// ];
+  	{title: "simple game",
+  	author: "Hugo Ybarra",
+  	upVotes: 200,
+  	downVotes: 3},
+  	];
 
 
 /*
@@ -66,12 +66,46 @@ angular.module('personalProjectApp')
 
 */
 
-App.directive('test', function(){
+App.directive('formContainer', function(){
   return{
     restrict: 'E',
     controller: function(){
       this.swapState = function (message){
         console.log("swap the state" + message);
+
+
+
+
+
+
+
+
+      }
+    }
+  }
+});
+
+// form one
+App.directive('goblinFormOne', function factory(injectables){
+  var directiveDefinitionObject = {
+    priority: 0,
+    templateUrl : 'views/directives/formOne.html',
+    replace: false,
+    transclude: false,
+    restrict: 'E',
+    scope: false,
+    controller: function($scope, $elements, $attrs, $transclude, otherInjectables){
+      console.log('goblin form instantiated');
+    },
+    require: '',
+    compile: function compile(tElement, tAttrs, transclude){
+      return {
+        pre: function preLink(scope, iElement, iAttrs, controller){
+          console.log("pre");
+        },
+        post: function postLink(scope, iElement, iAttrs, controller){
+          console.log('post');
+        }
       }
     }
   }

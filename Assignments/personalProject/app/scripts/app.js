@@ -39,30 +39,22 @@ var App = angular.module('personalProjectApp', [
       });
   });
 
-// Example directive
-// app.directive("enter", function () {
-//   return function (scope, element, attrs) {
-//     element.bind("mouseenter", function () {
-//       scope.loadMoreTweets();
-//     })
-//   }
-// })
 
 
-App.directive('mynav',function(){
-  console.log('directive is running');
-  return {
-    restrict: 'E',
-    // templateUrl: 'views/nav/nav.html'
-    // Fix the margin on this junk. The optionsbox on the right needs fixing
-    template:'<div ng-controller="NavbarCtrl">'+
-    '<nav class="navbar navbar-inverse col-xs-12" role="navigation">'+
-    '<p class="navbar-text lead">Welcome to Hugo\'s Workshop</p>'+
-    ' <span class="navbar-text pull-right glyphicon glyphicon-th-list" ng-click="navOptions()"></span>'+
-    '</nav>'+
-    '</div>'
-  };
-});
+
+// App.directive('mynav',function(){
+//   return {
+//     restrict: 'E',
+//     // templateUrl: 'views/nav/nav.html'
+//     // Fix the margin on this junk. The optionsbox on the right needs fixing
+//     template:'<div ng-controller="NavbarCtrl">'+
+//     '<nav class="navbar navbar-inverse col-xs-12" role="navigation">'+
+//     '<p class="navbar-text lead">Welcome to Hugo\'s Workshop</p>'+
+//     ' <span class="navbar-text pull-right glyphicon glyphicon-th-list" ng-click="navOptions()"></span>'+
+//     '</nav>'+
+//     '</div>'
+//   };
+// });
 
 App.run(['$firebaseSimpleLogin', '$rootScope', function($firebaseSimpleLogin, $rootScope){
   // connect to the server
