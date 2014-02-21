@@ -5,6 +5,9 @@ App.directive('optionsBar', function(){
   return {
     controller: function($scope){
 
+    	$scope.someFunc = function(){
+    		console.log("some function ran");
+    	}
 
     },
     restrict: 'E',

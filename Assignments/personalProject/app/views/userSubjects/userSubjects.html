@@ -1,25 +1,45 @@
 <!-- Loop over all of the user submitted subjects -->
 <div class="col-xs-12" ng-swipe-right="swipeItRight()" >
 
-<!-- 	<div class="panel panel-default text-center">
-		<div class="panel-body">
-			Add Subject
+	<div class="subjectDiv" ng-hide="showForm" ng-click="formSwap()">
+		<div class="panel panel-default text-center" >
+			<div class="panel-body">
+				Add Subject
+			</div>
 		</div>
-	</div> -->
 
-	<div class="panel panel-default" ng-repeat="data in subjects" ng-click="subjectSection()">
-
-
-		<div class="panel-body">
-			<p class="pull-left">{{data.title}}</p>
-   			<p class="pull-right small">{{data.author}}</p>
-  		</div>
+		<div class="panel panel-default" ng-repeat="data in subjects" ng-click="subjectSection()">
 
 
+			<div class="panel-body">
+				<p class="pull-left">{{data.title}}</p>
+	   			<p class="pull-right small">{{data.author}}</p>
+	  		</div>
 
+		</div>
 	</div>
 
+	<div ng-show="showForm">
+
+		<form role="form" ng-show="formOne">
+			<p class="lead text-center">Give your article a title</p>
+			<hr>
+			<div class="form-group">
+				<label for="subName">Article Title</label>
+				<input type="text" ng-model="NUSubject.title" id="subName" class="form-control">
+			</div>
+
+			<button class="btn tbn-default pull-left col-xs-3" ng-click="hideForm()">Back</button>
+			<button class="btn btn-default pull-right col-xs-3" ng-click="newSubjectPartTwo()">next</button>
+		</form>
+
+		<new-subject-forms ng-show="formTwo"></new-subject-forms>
+	</div>
 </div>
+
+
+
+
 
 
 

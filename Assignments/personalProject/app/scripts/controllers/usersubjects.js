@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('personalProjectApp')
-  .controller('UsersubjectsCtrl', function ($scope, $routeParams, $location, $rootScope) {
+  .controller('UsersubjectsCtrl', ['$scope', '$routeParams',
+    '$location', '$rootScope', '$firebase' ,function ($scope, $routeParams, $location, $rootScope, $firebase) {
         /*
       user Subject COntroller
 
@@ -33,85 +34,25 @@ angular.module('personalProjectApp')
     // maybe come up with a better way to swap these out?
     // try using directives or figuring out how to do this with directives
     $scope.showForm = false;
-    $scope.showFormPart1 = false;
-    $scope.showFormPart2 = false;
 
+    // initializing vars
 
+  	// $scope.subjects = [
+  	// {title: "Python Basics ",
+  	// author: "Hugo Ybarra",
+  	// upVotes: 20,
+  	// downVotes: 1},
 
-  	$scope.subjects = [
-  	{title: "Python Basics ",
-  	author: "Hugo Ybarra",
-  	upVotes: 20,
-  	downVotes: 1},
+  	// {title: "Intro To pythong ",
+  	// author: "Hugo Ybarra",
+  	// upVotes: 3,
+  	// downVotes: 5},
 
-  	{title: "Intro To pythong ",
-  	author: "Hugo Ybarra",
-  	upVotes: 3,
-  	downVotes: 5},
-
-  	{title: "simple game",
-  	author: "Hugo Ybarra",
-  	upVotes: 200,
-  	downVotes: 3},
-  	];
-
-
-/*
-██████╗ ██╗██████╗ ███████╗ ██████╗████████╗██╗██╗   ██╗███████╗███████╗
-██╔══██╗██║██╔══██╗██╔════╝██╔════╝╚══██╔══╝██║██║   ██║██╔════╝██╔════╝
-██║  ██║██║██████╔╝█████╗  ██║        ██║   ██║██║   ██║█████╗  ███████╗
-██║  ██║██║██╔══██╗██╔══╝  ██║        ██║   ██║╚██╗ ██╔╝██╔══╝  ╚════██║
-██████╔╝██║██║  ██║███████╗╚██████╗   ██║   ██║ ╚████╔╝ ███████╗███████║
-╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝  ╚═══╝  ╚══════╝╚══════╝
-
-*/
-
-App.directive('formContainer', function(){
-  return{
-    restrict: 'E',
-    controller: function(){
-      this.swapState = function (message){
-        console.log("swap the state" + message);
-
-
-
-
-
-
-
-
-      }
-    }
-  }
-});
-
-// form one
-App.directive('goblinFormOne', function factory(injectables){
-  var directiveDefinitionObject = {
-    priority: 0,
-    templateUrl : 'views/directives/formOne.html',
-    replace: false,
-    transclude: false,
-    restrict: 'E',
-    scope: false,
-    controller: function($scope, $elements, $attrs, $transclude, otherInjectables){
-      console.log('goblin form instantiated');
-    },
-    require: '',
-    compile: function compile(tElement, tAttrs, transclude){
-      return {
-        pre: function preLink(scope, iElement, iAttrs, controller){
-          console.log("pre");
-        },
-        post: function postLink(scope, iElement, iAttrs, controller){
-          console.log('post');
-        }
-      }
-    }
-  }
-});
-
-
+  	// {title: "simple game",
+  	// author: "Hugo Ybarra",
+  	// upVotes: 200,
+  	// downVotes: 3},
+  	// ];
 
 /*
  ██████╗██╗     ██╗ ██████╗██╗  ██╗███████╗
@@ -121,13 +62,35 @@ App.directive('goblinFormOne', function factory(injectables){
 ╚██████╗███████╗██║╚██████╗██║  ██╗███████║
  ╚═════╝╚══════╝╚═╝ ╚═════╝╚═╝  ╚═╝╚══════
 */
-    $scope.nextOption = function(){
-      console.log('next option');
-      $scope.showFormPart1 = true;
+    $scope.newSubjectPartTwo = function(){
+
+      // error check the input field
+
+      if (typeof $scope.NUSubject.title === undefined){
+
+          // add an error class to the field
+
+      }else{
+
+        $scope.formOne = false;
+        $scope.formTwo = true;
+      }
+
     }
     $scope.formSwap = function(){
-      console.log('show form');
       $scope.showForm = true;
+      $scope.formOne = true;
+    }
+    $scope.hideForm = function(){
+      $scope.showForm = false;
+
+      // empty out the form here!
+    }
+
+
+    $scope.addNewSubject = function(){
+      console.log('add new subject');
+
     };
   	$scope.subjectSection = function(){
       $rootScope.userSubjectSelect = this.$id;
@@ -135,10 +98,9 @@ App.directive('goblinFormOne', function factory(injectables){
   		var view = "/subjectDetail/"+this.$id
   		$location.path(view);
   	};
-
     $scope.swipeItRight = function(){
       console.log('swiping right');
       var view = '/home';
       $location.path(view);
     }
-  });
+  }]);
