@@ -1,22 +1,23 @@
 <!-- Loop over all of the user submitted subjects -->
 <div class="col-xs-12" ng-swipe-right="swipeItRight()" >
 
-	<div class="subjectDiv" ng-hide="showForm" ng-click="formSwap()">
-		<div class="panel panel-default text-center" >
+	<div class="subjectDiv" ng-hide="showForm" >
+		<div class="panel panel-default text-center" ng-click="formSwap()">
 			<div class="panel-body">
-				Add Subject
+				Add an Article
 			</div>
 		</div>
 
-		<div class="panel panel-default" ng-repeat="data in subjects" ng-click="subjectSection()">
+		<div class="panel panel-default" ng-repeat="data in item">
 
-
+			<p>test</p>
 			<div class="panel-body">
 				<p class="pull-left">{{data.title}}</p>
 	   			<p class="pull-right small">{{data.author}}</p>
 	  		</div>
 
 		</div>
+		<hr>
 	</div>
 
 	<div ng-show="showForm">

@@ -3,57 +3,20 @@
 angular.module('personalProjectApp')
   .controller('UsersubjectsCtrl', ['$scope', '$routeParams',
     '$location', '$rootScope', '$firebase' ,function ($scope, $routeParams, $location, $rootScope, $firebase) {
-        /*
-      user Subject COntroller
-
-      Dependency
-      Firebse, scope, $routeParams, $location, $rootScope
-
-      general tasks
-      1. logout
-
-      init tasks
-      1. Connect to firebase
-      2. grab all user subjects
-      3. assign subject vars to scope
-
-      add a subject
-      1. on click pop up a form with a single text input for subject name
-      2. on submit send to surver and update server.
-      3. callback function should auto update on init tasks
-
-
-      on subject click
-      1. subject click should redirect to specific subject page
-
-      html
-      1. loop through subjects
-      2. Assign directives to subjects
-    */
 
     // maybe come up with a better way to swap these out?
     // try using directives or figuring out how to do this with directives
-    $scope.showForm = false;
 
-    // initializing vars
 
-  	// $scope.subjects = [
-  	// {title: "Python Basics ",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 20,
-  	// downVotes: 1},
+    // set up our fire base
 
-  	// {title: "Intro To pythong ",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 3,
-  	// downVotes: 5},
+    var URL = 'https://mddproj.firebaseio.com/'+$location.$$url;
+    // console.log(URL);
+    $scope.items = $firebase( new Firebase(URL));
+    //WTF IS REMOTE ITEMS?
+    $scope.items.$bind($scope, 'remoteItems');
 
-  	// {title: "simple game",
-  	// author: "Hugo Ybarra",
-  	// upVotes: 200,
-  	// downVotes: 3},
-  	// ];
-
+    console.log($scope.items);
 /*
  ██████╗██╗     ██╗ ██████╗██╗  ██╗███████╗
 ██╔════╝██║     ██║██╔════╝██║ ██╔╝██╔════╝
@@ -63,7 +26,7 @@ angular.module('personalProjectApp')
  ╚═════╝╚══════╝╚═╝ ╚═════╝╚═╝  ╚═╝╚══════
 */
     $scope.newSubjectPartTwo = function(){
-
+      console.log('newSub part two');
       // error check the input field
 
       if (typeof $scope.NUSubject.title === undefined){
@@ -71,6 +34,7 @@ angular.module('personalProjectApp')
           // add an error class to the field
 
       }else{
+        $rootScope.tempVar = $scope.NUSubject.title;
 
         $scope.formOne = false;
         $scope.formTwo = true;
@@ -93,6 +57,7 @@ angular.module('personalProjectApp')
 
     };
   	$scope.subjectSection = function(){
+      console.log(this.$id);
       $rootScope.userSubjectSelect = this.$id;
       console.log($rootScope.userSubjectSelect);
   		var view = "/subjectDetail/"+this.$id

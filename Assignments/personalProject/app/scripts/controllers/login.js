@@ -17,7 +17,7 @@ angular.module('personalProjectApp')
 
 		if ($rootScope.loginObj.user){
 		// send to home page
-		view = '/home';
+		var view = '/home';
 		$location.path(view);
 		}
 
